@@ -3,21 +3,21 @@
   file:
     path: ~/containers/nextcloud/{{item}}
     state: directory
-     with_items: 
-        - 'db'
-        - 'nginx'
-        - 'html'
+  with_items: 
+    - 'db'
+    - 'nginx'
+    - 'html'
 
 - name: create nginx dirs
   file: 
     path: ~/containers/nextcloud/nginx/{{item}}
-    state: directory
-     with_items:
-        - 'certs'
-        - 'html'
-        - 'modsec-confs'
-        - 'modsec-crs-confs'
-        - 'server-confs'
+    state: dirtectory
+  with_items:
+   - 'certs'
+   - 'html'
+   - 'modsec-confs'
+   - 'modsec-crs-confs'
+   - 'server-confs'
 
 - name: setting nginx permissions 
   file: 
