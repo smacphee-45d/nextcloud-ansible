@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - block:
+        - import_role:
+            name: container-engine
+
+- hosts: all
+  become: true
+  tasks:
+    - block:
+        - import_role:
+            name: nextcloud

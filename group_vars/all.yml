@@ -1,0 +1,4 @@
+#Self Signed or actual certificate (GENEERATE_SELF_SIGNED_SSL/AUTO_LETS_ENCRYPT) NOTE: Lets Encrypt requires a domain name 
+certificate_method: 
+#Server name, this can either be public IP, or a domain name.
+server_name: 

@@ -1,0 +1,11 @@
+---
+- name: open nextcloud firewall ports
+  firewalld:
+    port: "8443-8080/tcp"
+    zone: "public"
+    permanent: true
+    immediate: true
+    state: enabled
+
+- name: include setup_container.yml
+  include_tasks: setup_container.yml
