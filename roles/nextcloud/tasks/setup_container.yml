@@ -1,51 +1,24 @@
----
-- name: create nextcloud dirs
-  file:
-    path: ~/containers/nextcloud/{{item}}
-    state: directory
-  with_items: 
-    - 'db'
-    - 'nginx'
-    - 'html'
-
-- name: create nginx dirs
+- name: setup directories
   file: 
-    path: ~/containers/nextcloud/nginx/{{item}}
-    state: dirtectory
-  with_items:
-   - 'certs'
-   - 'html'
-   - 'modsec-confs'
-   - 'modsec-crs-confs'
-   - 'server-confs'
-
-- name: setting nginx permissions 
-  file: 
-    path: ~/containers/nextcloud/nginx/certs
-    owner: 101
-    group: 101
-    mode: "0770"
-
-- name: pull mariadb image
-  containers.podman.podman_image:
-    name: docker.io/library/mariadb:10.9.3
-
-- name: pull bunkerized nginx image  
-  containers.podman.podman_image:
-    name: bunkerity/bunkerized-nginx
-
-- name: setup nextcloud build environment
-  file:
-    path: /opt/nextcloud
-    state: directory
-  template: 
-    src: Dockerfile
-    dest: "/opt/nextcloud/Dockerfile"
+    path: "/containers/nextcloud/{{item}}"
     owner: root
     group: root
-    mode: 0644
+    mode: 0755
+    recurse: yes
+    state: directory
+  with_items: ["db", "nginx", "html"]
 
-- name: build nextcloud
-  containers.podman.podman_image:
-    name: 45cloud
-    path: /opt/nextcloud
+- name: make building directorie
+  file:
+    path: "/opt/nextcloud"
+    owner: root
+    group: root
+    mode: 0755
+    recurse: yes
+    state: directory
+
+- name: move Dockerfile template
+  template: 
+    src: Dockerfile
+    dest: /opt/nextcloud/Dockerfile
+    owner: root
