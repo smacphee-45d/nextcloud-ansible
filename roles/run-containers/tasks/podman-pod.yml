@@ -1,0 +1,7 @@
+- name: create nextcloud pod 
+  containers.podman.podman_pod:
+    name: nextcloud_pod
+    state: started
+    ports:
+      - "8080:8080"
+      - "8443:8443"

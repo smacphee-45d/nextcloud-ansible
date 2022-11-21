@@ -5,3 +5,11 @@
     - block:
         - import_role:
             name: nextcloud
+
+- hosts: all
+  become: true
+  tasks:
+    - block:
+        - import_role:
+            name: nginx
+
