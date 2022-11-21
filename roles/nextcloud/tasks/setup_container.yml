@@ -8,7 +8,7 @@
     state: directory
   with_items: ["db", "nginx", "html"]
 
-- name: make building directorie
+- name: make building directories
   file:
     path: "/opt/nextcloud"
     owner: root
