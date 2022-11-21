@@ -1,16 +1,16 @@
 - name: setup directories
   file: 
-    path: "/containers/nextcloud/nginx/{{item}}"
+    path: "~/containers/nextcloud/nginx/{{item}}"
     owner: root
     group: root
     mode: 0755
     recurse: yes
     state: directory
-  with_items: ["modsec-configs", "html", "modsec-crs-confs", "server-confs"]
+  with_items: ["modsec-confs", "html", "modsec-crs-confs", "server-confs"]
 
 - name: set dir permissions 
   file:
-    path: "/containers/nextcloud/nginx/certs"
+    path: "~/containers/nextcloud/nginx/certs"
     owner: 101
     group: 101
     mode: 0755
@@ -25,7 +25,7 @@
 
 - name: move modsec-crs-conf template
   template: 
-    src: nextcloudmdseccrs.conf
+    src: nextcloudmodseccrs.conf
     dest: ~/containers/nextcloud/nginx/modsec-crs-confs/nextcloud.conf
 
 - name: move server-confs template

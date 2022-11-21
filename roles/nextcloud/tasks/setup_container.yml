@@ -1,6 +1,6 @@
 - name: setup directories
   file: 
-    path: "/containers/nextcloud/{{item}}"
+    path: "~/containers/nextcloud/{{item}}"
     owner: root
     group: root
     mode: 0755
@@ -22,3 +22,8 @@
     src: Dockerfile
     dest: /opt/nextcloud/Dockerfile
     owner: root
+
+- name: build podman contaner
+  containers.podman.podman_image:
+    name: 45cloud
+    path: /opt/nextcloud

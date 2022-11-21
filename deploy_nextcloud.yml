@@ -13,3 +13,9 @@
         - import_role:
             name: nginx
 
+- hosts: all
+  become: true
+  tasks:
+    - block:
+        - import_role:
+            name: run-containers
