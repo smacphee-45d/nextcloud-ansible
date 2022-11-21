@@ -9,11 +9,13 @@
   with_items: ["modsec-configs", "html", "modsec-crs-confs", "server-confs"]
 
 - name: set dir permissions 
-  file: "/containers/nextcloud/nginx/certs"
-  owner: 101
-  group: 101
-  mode: 0755
-  state: directory
+  file:
+    path: "/containers/nextcloud/nginx/certs"
+    owner: 101
+    group: 101
+    mode: 0755
+    recurse: yes
+    state: directory
 
 - name: move modsec-conf template
   template: 
