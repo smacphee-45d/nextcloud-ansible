@@ -1,0 +1,13 @@
+- name: start nextcloud container
+  containers.podman.podman_container: 
+    name: nextcloud
+    pod: nextcloud_pod
+    image: localhost/45cloud
+    state: started
+    volume:
+      - /root/containers/nextcloud/html:/var/www/html:z
+    env: 
+       MYSQL_HOST: "127.0.0.1"
+       MYSQL_USER: "nextcloud"
+       MYSQL_PASSWORD: "sql-password"
+       MYSQL_DATABASE: "nextcloud"

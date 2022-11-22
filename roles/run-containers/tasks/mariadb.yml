@@ -1,0 +1,19 @@
+- name: pull mariaDB image
+  containers.podman.podman_image:
+    name: docker.io/library/mariadb
+    pull: true
+    tag: latest
+
+- name: start mariaDB container
+  containers.podman.podman_container:
+    name: mariadb
+    pod: nextcloud_pod
+    image: docker.io/library/mariadb:latest
+    state: started
+    volume:
+      - /root/containers/nextcloud/db:/var/lib/mysql:Z
+    env: 
+       MYSQL_USER: "nextcloud"
+       MYSQL_PASSWORD: "sql-password"
+       MYSQL_ROOT_PASSWORD: "sql-root-password"
+       MYSQL_DATABASE: "nextcloud"

@@ -1,0 +1,35 @@
+- name: pull nginx image
+  containers.podman.podman_image: 
+    name: bunkerity/bunkerized-nginx
+    pull: true
+    tag: 1.2.7
+    
+- name: start nginx container 
+  containers.podman.podman_container: 
+    name: nginx
+    pod: nextcloud_pod
+    image: bunkerity/bunkerized-nginx:1.2.7
+    state: started
+    volume: 
+      - /root/containers/nextcloud/html:/www:ro,z
+      - /root/containers/nextcloud/nginx/certs:/etc/letsencrypt:Z
+      - /root/containers/nextcloud/nginx/server-confs:/server-confs:ro,z
+      - /root/containers/nextcloud/nginx/modsec-crs-confs:/modsec-crs-confs:ro,z
+      - /root/containers/nextcloud/nginx/modsec-confs:/modsec-confs:ro,z
+    env:
+       SERVER_NAME: '{{ server_name }}'
+       GENERATE_SELF_SIGNED_SSL: '{{ GENERATE_SELF_SIGNED }}'
+       AUTO_LETS_ENCRYPT: '{{ AUTO_LETS_ENCRYPT }}'
+       REDIRECT_HTTP_TO_HTTPS: "yes"
+       DISABLE_DEFAULT_SERVER: "yes"
+       MAX_CLIENT_SIZE: "10G"
+       USE_CLIENT_CACHE: "yes"
+       REMOTE_PHP: "nextcloud"
+       REMOTE_PHP_PATH: "/var/www/html"
+       LIMIT_REQ_RATE: "5r/s"
+       LIMIT_REQ_BURST: "10"
+       ALLOWED_METHODS: "GET|POST|HEAD|PROPFIND|DELETE|PUT|MKCOL|MOVE|COPY|PROPPATCH|REPORT|UNLOCK|OPTIONS"
+       X_FRAME_OPTIONS: "SAMEORIGIN"
+       USE_GZIP: "yes"
+       USE_BAD_BEHAVIOR: "yes"
+       WHITELIST_USER_AGENT: "'WebDAV iOS'"
