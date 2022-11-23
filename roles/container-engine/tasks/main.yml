@@ -1,3 +1,0 @@
----
-- name: include pre_requisites/prerequisites.yml
-  include_tasks: pre_requisites/prerequisites.yml
