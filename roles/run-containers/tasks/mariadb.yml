@@ -17,3 +17,8 @@
        MYSQL_PASSWORD: "sql-password"
        MYSQL_ROOT_PASSWORD: "sql-root-password"
        MYSQL_DATABASE: "nextcloud"
+    generate_systemd:
+      path: /etc/systemd/system/
+      restart_policy: always
+      time: 120
+      names: true
