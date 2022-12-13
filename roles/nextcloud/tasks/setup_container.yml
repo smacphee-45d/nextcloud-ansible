@@ -1,6 +1,6 @@
 - name: setup directories
   file: 
-    path: "~/containers/nextcloud/{{item}}"
+    path: "/opt/45drives/containers/nextcloud/{{item}}"
     owner: root
     group: root
     mode: 0755
@@ -10,7 +10,7 @@
 
 - name: make building directories
   file:
-    path: "/opt/nextcloud"
+    path: "/opt/45drives/nextcloud"
     owner: root
     group: root
     mode: 0755
@@ -18,12 +18,12 @@
     state: directory
 
 - name: move Dockerfile template
-  template: 
+  copy: 
     src: Dockerfile
-    dest: /opt/nextcloud/Dockerfile
+    dest: /opt/45drives/nextcloud/Dockerfile
     owner: root
 
-- name: build podman contaner
+- name: build podman container
   containers.podman.podman_image:
     name: 45cloud
-    path: /opt/nextcloud
+    path: /opt/45drives/nextcloud

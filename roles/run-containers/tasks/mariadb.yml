@@ -11,7 +11,7 @@
     image: docker.io/library/mariadb:latest
     state: started
     volume:
-      - /root/containers/nextcloud/db:/var/lib/mysql:Z
+      - /opt/45drives/containers/nextcloud/db:/var/lib/mysql:Z
     env: 
        MYSQL_USER: "nextcloud"
        MYSQL_PASSWORD: "sql-password"

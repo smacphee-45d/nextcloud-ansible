@@ -11,11 +11,11 @@
     image: bunkerity/bunkerized-nginx:1.2.7
     state: started
     volume: 
-      - /root/containers/nextcloud/html:/www:ro,z
-      - /root/containers/nextcloud/nginx/certs:/etc/letsencrypt:Z
-      - /root/containers/nextcloud/nginx/server-confs:/server-confs:ro,z
-      - /root/containers/nextcloud/nginx/modsec-crs-confs:/modsec-crs-confs:ro,z
-      - /root/containers/nextcloud/nginx/modsec-confs:/modsec-confs:ro,z
+      - /opt/45drives/containers/nextcloud/html:/www:ro,z
+      - /opt/45drives/containers/nextcloud/nginx/certs:/etc/letsencrypt:Z
+      - /opt/45drives/containers/nextcloud/nginx/server-confs:/server-confs:ro,z
+      - /opt/45drives/containers/nextcloud/nginx/modsec-crs-confs:/modsec-crs-confs:ro,z
+      - /opt/45drives/containers/nextcloud/nginx/modsec-confs:/modsec-confs:ro,z
     env:
        SERVER_NAME: '{{ server_name }}'
        GENERATE_SELF_SIGNED_SSL: '{{ GENERATE_SELF_SIGNED }}'

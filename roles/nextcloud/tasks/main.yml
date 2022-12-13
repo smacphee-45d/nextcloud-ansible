@@ -1,7 +1,23 @@
 ---
+- name: "Verify that required string variables are defined"
+  assert:
+    that: 
+      - "{{ ahs_var }} is defined"
+      - "{{ ahs_var }} | length > 0"
+      - "{{ ahs_var }} != None"
+    fail_msg: "{{ ahs_var }} needs to be set for the role to work"
+    success_msg: "Required variable {{ ahs_var }} is defined"
+  loop_control:
+    loop_var: ahs_var
+  with_items:
+    - server_name
+    - GENERATE_SELF_SIGNED
+    - AUTO_LETS_ENCRYPT
+
+
 - name: open nextcloud firewall ports
   firewalld:
-    port: "8443-8080/tcp"
+    port: ' {{pod_ports}} '
     zone: "public"
     permanent: true
     immediate: true

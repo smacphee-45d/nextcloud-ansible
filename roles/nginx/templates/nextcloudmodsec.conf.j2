@@ -1,5 +1,5 @@
-SecRuleRemoveById 921110
-SecRuleRemoveById 949110
-SecRuleRemoveById 920420
+{% for rule in security_rules %}
+SecRuleRemoveById {{ rule }} 
+{% endfor %}
 SecRequestBodyLimit 100000000
 SecRule REQUEST_FILENAME "@contains /remote.php/webdav"  "id:1,nolog,pass,ctl:ruleRemoveByTag=OWASP_CRS"

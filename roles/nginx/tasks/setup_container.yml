@@ -1,6 +1,6 @@
 - name: setup directories
   file: 
-    path: "~/containers/nextcloud/nginx/{{item}}"
+    path: "/opt/45drives/containers/nextcloud/nginx/{{item}}"
     owner: root
     group: root
     mode: 0755
@@ -10,7 +10,7 @@
 
 - name: set dir permissions 
   file:
-    path: "~/containers/nextcloud/nginx/certs"
+    path: "/opt/45drives/containers/nextcloud/nginx/certs"
     owner: 101
     group: 101
     mode: 0755
@@ -19,16 +19,16 @@
 
 - name: move modsec-conf template
   template: 
-    src: nextcloudmodsec.conf
-    dest: ~/containers/nextcloud/nginx/modsec-confs/nextcloud.conf
+    src: nextcloudmodsec.conf.j2
+    dest: /opt/45drives/containers/nextcloud/nginx/modsec-confs/nextcloud.conf
     owner: root
 
 - name: move modsec-crs-conf template
-  template: 
+  copy: 
     src: nextcloudmodseccrs.conf
-    dest: ~/containers/nextcloud/nginx/modsec-crs-confs/nextcloud.conf
+    dest: /opt/45drives/containers/nextcloud/nginx/modsec-crs-confs/nextcloud.conf
 
 - name: move server-confs template
-  template: 
+  copy: 
     src: nextcloudserver.conf
-    dest: ~/containers/nextcloud/nginx/server-confs/nextcloud.conf
+    dest: /opt/45drives/containers/nextcloud/nginx/server-confs/nextcloud.conf
