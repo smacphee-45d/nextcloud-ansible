@@ -17,6 +17,7 @@
        MYSQL_PASSWORD: '{{ sql_password }}'
        MYSQL_ROOT_PASSWORD: '{{ sql_root_password }}'
        MYSQL_DATABASE: '{{ sql_database }}'
+
     generate_systemd:
       path: /etc/systemd/system/
       restart_policy: always
