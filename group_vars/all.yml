@@ -3,3 +3,7 @@ GENERATE_SELF_SIGNED: ''
 AUTO_LETS_ENCRYPT: ''
 #Server name, this can either be public IP, or a domain name (lets encrypt).
 server_name: ''
+
+#Nextcloud upload and memory limits
+#php_upload: ''
+#php_memory: ''
