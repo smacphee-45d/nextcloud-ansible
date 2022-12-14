@@ -2,13 +2,13 @@
 - name: "Verify that required string variables are defined"
   assert:
     that: 
-      - "{{ ahs_var }} is defined"
-      - "{{ ahs_var }} | length > 0"
-      - "{{ ahs_var }} != None"
-    fail_msg: "{{ ahs_var }} needs to be set for the role to work"
-    success_msg: "Required variable {{ ahs_var }} is defined"
+      - "{{ ver_loop }} is defined"
+      - "{{ ver_loop }} | length > 0"
+      - "{{ ver_loop }} != None"
+    fail_msg: "{{ ver_loop }} needs to be set for the role to work"
+    success_msg: "Required variable {{ ver_loop }} is defined"
   loop_control:
-    loop_var: ahs_var
+    loop_var: ver_loop
   with_items:
     - server_name
     - GENERATE_SELF_SIGNED
