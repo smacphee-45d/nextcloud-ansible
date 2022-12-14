@@ -3,8 +3,8 @@
     name: nextcloud_pod
     state: started
     ports:
-     - ' {{ http_port }} '
-     - ' {{ https_port }} '
+     - "{{ http_port }}"
+     - "{{ https_port }}"
     generate_systemd:
       path: /etc/systemd/system/
       restart_policy: always
