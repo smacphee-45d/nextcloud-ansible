@@ -17,11 +17,14 @@
 
 - name: open nextcloud firewall ports
   firewalld:
-    port: ' {{pod_ports}} '
+    port: "{{ item }}"
     zone: "public"
     permanent: true
     immediate: true
     state: enabled
+  with_items:
+   - "{{ pod_firewall_http_port }}"
+   - "{{ pod_firewall_https_port }}"
 
 - name: include setup_container.yml
   include_tasks: setup_container.yml
