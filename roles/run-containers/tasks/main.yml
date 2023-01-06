@@ -10,3 +10,7 @@
 
 - name: standup nginx
   include_tasks: nginx.yml
+
+- name: setup systemd
+  include_tasks: generate-systemd.yml
+  

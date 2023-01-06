@@ -13,9 +13,3 @@
        MYSQL_DATABASE: '{{ sql_database }}'
        PHP_UPLOAD_LIMIT: '{{ php_upload }}'
        PHP_MEMORY_LIMIT: '{{ php_memory }}'
-
-    generate_systemd:
-      path: /etc/systemd/system/
-      restart_policy: always
-      time: 120
-      names: true

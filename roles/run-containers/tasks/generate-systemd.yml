@@ -1,0 +1,4 @@
+- name: Generate systemd for pod and container
+  ansible.builtin.command: podman generate systemd --new --files --name nextcloud_pod
+  args:
+    chdir: /etc/systemd/system

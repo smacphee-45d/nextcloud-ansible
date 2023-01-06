@@ -33,8 +33,3 @@
        USE_GZIP: "yes"
        USE_BAD_BEHAVIOR: "yes"
        WHITELIST_USER_AGENT: "'WebDAV iOS'"
-    generate_systemd:
-      path: /etc/systemd/system/
-      restart_policy: always
-      time: 120
-      names: true
