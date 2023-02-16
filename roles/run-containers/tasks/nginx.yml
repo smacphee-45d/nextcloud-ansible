@@ -18,6 +18,7 @@
       - /opt/45drives/containers/nextcloud/nginx/modsec-confs:/modsec-confs:ro,z
     env:
        SERVER_NAME: '{{ server_name }}'
+       MULTISITE: '{{ multisite }}'
        GENERATE_SELF_SIGNED_SSL: '{{ GENERATE_SELF_SIGNED }}'
        AUTO_LETS_ENCRYPT: '{{ AUTO_LETS_ENCRYPT }}'
        REDIRECT_HTTP_TO_HTTPS: "yes"

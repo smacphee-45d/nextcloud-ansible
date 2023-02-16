@@ -1,9 +1,19 @@
 #Self Signed or actual certificate (yes/no). If using AUTO_LETS_ENCRYPT you must have a properly registered domain name. 
 GENERATE_SELF_SIGNED: ''
 AUTO_LETS_ENCRYPT: ''
-#Server name, this can either be public IP, or a domain name (lets encrypt).
+#Server name, this can either be public IP, or a domain name (lets encrypt)
 server_name: ''
+#Nextcloud trusted domains, space seperated. 
+nextcloud_trusted: ''
 
 #memory and upload limit for php 
 #php_upload: ''
 #php_memory: '' 
+
+
+#multi-site settings (when doing local and remote)
+#space seperated values 
+#server_names: ''
+#multisite: 'yes'
+#self_signed_ip: ''
+#domain_ip: ''

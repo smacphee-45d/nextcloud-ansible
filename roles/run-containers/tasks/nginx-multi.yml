@@ -1,0 +1,25 @@
+- name: pull nginx image
+  containers.podman.podman_image: 
+    name: bunkerity/bunkerized-nginx
+    pull: true
+    tag: 1.2.7
+
+- name: move env template
+  template: 
+    src: nginx_multi.env.j2
+    dest: /opt/45drives/nextcloud/.env
+    owner: root
+    
+- name: start nginx container 
+  containers.podman.podman_container: 
+    name: nginx
+    pod: nextcloud_pod
+    image: bunkerity/bunkerized-nginx:1.2.7
+    state: started
+    volume: 
+      - /opt/45drives/containers/nextcloud/html:/www:ro,z
+      - /opt/45drives/containers/nextcloud/nginx/certs:/etc/letsencrypt:Z
+      - /opt/45drives/containers/nextcloud/nginx/server-confs:/server-confs:ro,z
+      - /opt/45drives/containers/nextcloud/nginx/modsec-crs-confs:/modsec-crs-confs:ro,z
+      - /opt/45drives/containers/nextcloud/nginx/modsec-confs:/modsec-confs:ro,z
+    env_file: /opt/45drives/nextcloud/.env

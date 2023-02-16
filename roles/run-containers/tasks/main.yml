@@ -10,6 +10,13 @@
 
 - name: standup nginx
   include_tasks: nginx.yml
+  when: multisite == "no"
+
+- name: standup nginx multi
+  include_tasks: nginx-multi.yml
+  when: multisite == "yes"
+
+
 
 - name: setup systemd
   include_tasks: generate-systemd.yml
