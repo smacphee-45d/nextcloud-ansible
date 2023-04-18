@@ -13,3 +13,4 @@
        MYSQL_DATABASE: '{{ sql_database }}'
        PHP_UPLOAD_LIMIT: '{{ php_upload }}'
        PHP_MEMORY_LIMIT: '{{ php_memory }}'
+       NEXTCLOUD_TRUSTED_DOMAINS: '{{ trusted_domains }}'

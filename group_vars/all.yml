@@ -4,6 +4,9 @@ AUTO_LETS_ENCRYPT: ''
 #Server name, this can either be public IP, or a domain name (lets encrypt).
 server_name: ''
 
+#Used when using multiple server names, such as local IP, and remote IP. 
+#trusted_domains: ''
+
 #memory and upload limit for php 
 #php_upload: ''
 #php_memory: '' 
